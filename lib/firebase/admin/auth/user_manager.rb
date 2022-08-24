@@ -79,6 +79,10 @@ module Firebase
           @client.post(with_path("accounts:delete"), {localId: validate_uid(uid, required: true)})
         end
 
+        def change_email(uid)
+          @client.post(with_path("accounts:update"), {localId: validate_uid(uid, required: true)})
+        end
+
         private
 
         def with_path(path)
