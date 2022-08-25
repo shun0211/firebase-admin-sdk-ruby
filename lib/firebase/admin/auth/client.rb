@@ -101,6 +101,10 @@ module Firebase
           verified_claims unless revoked
         end
 
+        def change_email(uid)
+          @user_manager.change_email(uid)
+        end
+
         private
 
         # Checks if an ID token has been revoked.
