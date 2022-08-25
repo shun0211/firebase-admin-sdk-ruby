@@ -101,8 +101,12 @@ module Firebase
           verified_claims unless revoked
         end
 
-        def change_email(uid)
-          @user_manager.change_email(uid)
+        def change_email(uid, email)
+          @user_manager.change_email(uid, email)
+        end
+
+        def send_confirm_email(uid)
+          @user_manager.send_confirm_email(uid)
         end
 
         private

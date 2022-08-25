@@ -80,7 +80,11 @@ module Firebase
         end
 
         def change_email(uid)
-          @client.post(with_path("accounts:update"), {localId: validate_uid(uid, required: true)})
+          @client.post(with_path("accounts:update"), {localId: validate_uid(uid, required: true), email: validate_email(email) })
+        end
+
+        def send_confirm_email(uid)
+          @client.post(with_path("accounts:sendOobCode"), {localId: validate_uid(uid, required: true), requestType: "VERIFY_EMAIL" })
         end
 
         private
