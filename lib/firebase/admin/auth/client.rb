@@ -110,7 +110,13 @@ module Firebase
         end
 
         def send_confirm_email_test(uid)
-          @user_manager.send_confirm_email_test(uid)
+          begin
+            @user_manager.send_confirm_email_test(uid)
+          rescue Faraday::BadRequestError => e
+            puts e
+            puts e.message
+            puts e.backtrace
+          end
         end
 
         private
