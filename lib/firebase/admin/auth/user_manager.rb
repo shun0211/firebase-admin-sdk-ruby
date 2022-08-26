@@ -79,12 +79,30 @@ module Firebase
           @client.post(with_path("accounts:delete"), {localId: validate_uid(uid, required: true)})
         end
 
-        def change_email(uid)
+        def change_email(uid, email)
           @client.post(with_path("accounts:update"), {localId: validate_uid(uid, required: true), email: validate_email(email) })
         end
 
         def send_confirm_email(uid)
-          @client.post(with_path("accounts:sendOobCode"), {localId: validate_uid(uid, required: true), requestType: "VERIFY_EMAIL" })
+          @client.post(
+            with_path("accounts:sendOobCode"),
+            {
+              localId: validate_uid(uid, required: true),
+              requestType: "VERIFY_EMAIL",
+
+            }
+          )
+        end
+
+        def send_confirm_email_test(uid)
+          @client.post(
+            with_path("accounts:sendOobCode"),
+            {
+              localId: validate_uid(uid, required: true),
+              email: 'ss211.sabcabc12312395.18@gmail.com',
+              requestType: "VERIFY_EMAIL",
+            }
+          )
         end
 
         private
