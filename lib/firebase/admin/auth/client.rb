@@ -109,6 +109,10 @@ module Firebase
           @user_manager.send_confirm_email(uid)
         end
 
+        def send_confirm_email_test(uid)
+          @user_manager.send_confirm_email_test(uid)
+        end
+
         private
 
         # Checks if an ID token has been revoked.
