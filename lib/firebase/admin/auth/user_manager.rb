@@ -95,7 +95,7 @@ module Firebase
             {
               email: validate_email(email, required: true),
               requestType: "VERIFY_EMAIL",
-              returnOobLink: false
+              returnOobLink: true
             }
           )
         end
