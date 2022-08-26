@@ -89,23 +89,11 @@ module Firebase
           )
         end
 
-        def send_confirm_email(uid)
+        def send_confirm_email(email)
           @client.post(
             with_path("accounts:sendOobCode"),
             {
-              localId: validate_uid(uid, required: true),
-              requestType: "VERIFY_EMAIL",
-
-            }
-          )
-        end
-
-        def send_confirm_email_test(uid)
-          @client.post(
-            with_path("accounts:sendOobCode"),
-            {
-              localId: validate_uid(uid, required: true),
-              email: 'ss211.sabcabc12312395.18@gmail.com',
+              email: validate_email(email, required: true),
               requestType: "VERIFY_EMAIL",
               returnOobLink: true
             }

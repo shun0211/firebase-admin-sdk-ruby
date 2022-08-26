@@ -105,24 +105,8 @@ module Firebase
           @user_manager.change_email(uid, email)
         end
 
-        def send_confirm_email(uid)
-          begin
-            @user_manager.send_confirm_email(uid)
-          rescue Faraday::BadRequestError => e
-            puts e
-            puts e.message
-            puts e.backtrace
-          end
-        end
-
-        def send_confirm_email_test(uid)
-          begin
-            @user_manager.send_confirm_email_test(uid)
-          rescue Faraday::BadRequestError => e
-            puts e
-            puts e.message
-            puts e.backtrace
-          end
+        def send_confirm_email(email)
+          @user_manager.send_confirm_email(email)
         end
 
         private
